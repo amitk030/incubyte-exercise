@@ -1,6 +1,7 @@
 class StringOperation
 
-  def add(numbers)
+  # arg is a list of number separated by a delimiter
+  def add(arg)
     
   end
 end
