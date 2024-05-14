@@ -20,5 +20,21 @@ RSpec.describe StringOperation do
         expect(calculator.add(arg)).to eq(10)
       end
     end
+
+    context 'when \n is present along with delimiter' do
+      context 'when \n is present in the middle' do
+        let(:arg) {"1\n2,3"}
+        it 'returns their sum' do
+          expect(calculator.add(arg)).to eq(6)
+        end
+      end
+
+      context 'when \n is present in the end of the string' do
+        let(:arg) {"1,\n"}
+        it 'returns invalid argument' do
+          expect(calculator.add(arg)).to raise("invalid argument")
+        end
+      end
+    end
   end
 end
