@@ -33,7 +33,23 @@ RSpec.describe StringOperation do
       context 'when \n is present in the end of the string' do
         let(:arg) {"1,\n"}
 
-        it 'returns invalid argument' do
+        it 'raise invalid argument' do
+          expect{ calculator.add(arg) }.to raise_error(RuntimeError,"invalid argument")
+        end
+      end
+    end
+
+    context 'when delimiter is different string' do
+      let(:arg) {"//;\n1;2"}
+
+      it 'returns their sum' do
+        expect(calculator.add(arg)).to eq(3)
+      end
+
+      context 'when newline character is present in the end of the string' do
+        let(:arg) {"//;1;\n"}
+
+        it 'raise invalid argument' do
           expect{ calculator.add(arg) }.to raise_error(RuntimeError,"invalid argument")
         end
       end
